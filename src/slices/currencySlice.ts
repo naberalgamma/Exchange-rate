@@ -18,12 +18,9 @@ export const fetchTodo = createAsyncThunk<
   ExchangeRate[],
   undefined,
   { rejectValue: string }
->("todo/fetchTodo", async function (_, { rejectWithValue }) {
+>("todo/fetchTodo", async function () {
   const response = await fetch("https://api.monobank.ua/bank/currency");
 
-  if (!response.ok) {
-    return rejectWithValue("Server error");
-  }
   const data = await response.json();
 
   return data;
